@@ -40,7 +40,7 @@
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    /* Progress bar styles */
+    /* Progress bar */
     .progress-container {
       width: 100%;
       background: #ddd;
@@ -69,43 +69,107 @@
   <!-- Questions -->
   <div class="question active">
     <p>1. How many hours of sleep do you usually get?</p>
-    <label><input type="radio" name="sleep"> Less than 5</label><br>
-    <label><input type="radio" name="sleep"> 5–6</label><br>
-    <label><input type="radio" name="sleep"> 7–8</label><br>
-    <label><input type="radio" name="sleep"> 9+</label><br>
+    <label><input type="radio" name="sleep" value="low"> Less than 5</label><br>
+    <label><input type="radio" name="sleep" value="medium"> 5–6</label><br>
+    <label><input type="radio" name="sleep" value="high"> 7–8</label><br>
+    <label><input type="radio" name="sleep" value="high"> 9+</label><br>
     <button onclick="nextQuestion()">Next</button>
   </div>
 
   <div class="question">
     <p>2. How often do you exercise?</p>
-    <label><input type="radio" name="exercise"> Daily</label><br>
-    <label><input type="radio" name="exercise"> Few times a week</label><br>
-    <label><input type="radio" name="exercise"> Rarely</label><br>
-    <label><input type="radio" name="exercise"> Never</label><br>
+    <label><input type="radio" name="exercise" value="high"> Daily</label><br>
+    <label><input type="radio" name="exercise" value="medium"> Few times a week</label><br>
+    <label><input type="radio" name="exercise" value="low"> Rarely</label><br>
+    <label><input type="radio" name="exercise" value="low"> Never</label><br>
     <button onclick="nextQuestion()">Next</button>
   </div>
 
   <div class="question">
     <p>3. Do you take breaks during your workday?</p>
-    <label><input type="radio" name="breaks"> Regularly</label><br>
-    <label><input type="radio" name="breaks"> Occasionally</label><br>
-    <label><input type="radio" name="breaks"> Rarely</label><br>
-    <label><input type="radio" name="breaks"> Never</label><br>
+    <label><input type="radio" name="breaks" value="high"> Regularly</label><br>
+    <label><input type="radio" name="breaks" value="medium"> Occasionally</label><br>
+    <label><input type="radio" name="breaks" value="low"> Rarely</label><br>
+    <label><input type="radio" name="breaks" value="low"> Never</label><br>
     <button onclick="nextQuestion()">Next</button>
   </div>
 
   <div class="question">
     <p>4. How is your nutrition?</p>
-    <label><input type="radio" name="nutrition"> Balanced and healthy</label><br>
-    <label><input type="radio" name="nutrition"> Somewhat balanced</label><br>
-    <label><input type="radio" name="nutrition"> Often unhealthy</label><br>
-    <label><input type="radio" name="nutrition"> Very poor</label><br>
+    <label><input type="radio" name="nutrition" value="high"> Balanced and healthy</label><br>
+    <label><input type="radio" name="nutrition" value="medium"> Somewhat balanced</label><br>
+    <label><input type="radio" name="nutrition" value="low"> Often unhealthy</label><br>
+    <label><input type="radio" name="nutrition" value="low"> Very poor</label><br>
+    <button onclick="nextQuestion()">Next</button>
+  </div>
+
+  <div class="question">
+    <p>5. How often do you spend time outdoors?</p>
+    <label><input type="radio" name="outdoors" value="high"> Daily</label><br>
+    <label><input type="radio" name="outdoors" value="medium"> Few times a week</label><br>
+    <label><input type="radio" name="outdoors" value="low"> Rarely</label><br>
+    <button onclick="nextQuestion()">Next</button>
+  </div>
+
+  <div class="question">
+    <p>6. How often do you connect with friends or family?</p>
+    <label><input type="radio" name="social" value="high"> Daily</label><br>
+    <label><input type="radio" name="social" value="medium"> Weekly</label><br>
+    <label><input type="radio" name="social" value="low"> Rarely</label><br>
+    <button onclick="nextQuestion()">Next</button>
+  </div>
+
+  <div class="question">
+    <p>7. How do you manage stress?</p>
+    <label><input type="radio" name="stress" value="high"> Healthy coping strategies</label><br>
+    <label><input type="radio" name="stress" value="medium"> Sometimes healthy</label><br>
+    <label><input type="radio" name="stress" value="low"> Often unhealthy</label><br>
+    <button onclick="nextQuestion()">Next</button>
+  </div>
+
+  <div class="question">
+    <p>8. Do you practice mindfulness or prayer?</p>
+    <label><input type="radio" name="mindfulness" value="high"> Daily</label><br>
+    <label><input type="radio" name="mindfulness" value="medium"> Sometimes</label><br>
+    <label><input type="radio" name="mindfulness" value="low"> Rarely</label><br>
+    <button onclick="nextQuestion()">Next</button>
+  </div>
+
+  <div class="question">
+    <p>9. How often do you do something just for fun?</p>
+    <label><input type="radio" name="fun" value="high"> Daily</label><br>
+    <label><input type="radio" name="fun" value="medium"> Weekly</label><br>
+    <label><input type="radio" name="fun" value="low"> Rarely</label><br>
+    <button onclick="nextQuestion()">Next</button>
+  </div>
+
+  <div class="question">
+    <p>10. How do you feel about your work-life balance?</p>
+    <label><input type="radio" name="balance" value="high"> Very balanced</label><br>
+    <label><input type="radio" name="balance" value="medium"> Somewhat balanced</label><br>
+    <label><input type="radio" name="balance" value="low"> Poorly balanced</label><br>
+    <button onclick="nextQuestion()">Next</button>
+  </div>
+
+  <div class="question">
+    <p>11. How hydrated do you stay during the day?</p>
+    <label><input type="radio" name="hydration" value="high"> Plenty of water</label><br>
+    <label><input type="radio" name="hydration" value="medium"> Some water</label><br>
+    <label><input type="radio" name="hydration" value="low"> Very little</label><br>
+    <button onclick="nextQuestion()">Next</button>
+  </div>
+
+  <div class="question">
+    <p>12. How often do you reflect on or celebrate your progress?</p>
+    <label><input type="radio" name="reflection" value="high"> Regularly</label><br>
+    <label><input type="radio" name="reflection" value="medium"> Sometimes</label><br>
+    <label><input type="radio" name="reflection" value="low"> Rarely</label><br>
     <button onclick="finish()">Finish</button>
   </div>
 
   <div class="question" id="thanks">
     <h3>✅ Thank you for completing the Self-Care Check-In!</h3>
-    <p>Take a moment to reflect on your answers and choose one small action you can take today to care for yourself. 🌸</p>
+    <p id="resultMessage"></p>
   </div>
 
   <script>
@@ -113,6 +177,7 @@
     const questions = document.querySelectorAll('.question');
     const progress = document.getElementById('progress');
     const totalQuestions = questions.length - 1; // exclude thank-you
+    let score = 0;
 
     function updateProgress() {
       let percent = (current / totalQuestions) * 100;
@@ -120,6 +185,20 @@
     }
 
     function nextQuestion() {
+      const inputs = questions[current].querySelectorAll('input[type=radio]');
+      let answered = false;
+      inputs.forEach(input => {
+        if (input.checked) {
+          answered = true;
+          if (input.value === "high") score += 2;
+          if (input.value === "medium") score += 1;
+        }
+      });
+      if (!answered) {
+        alert("Please select an option before continuing.");
+        return;
+      }
+
       questions[current].classList.remove('active');
       current++;
       if (current < totalQuestions) {
@@ -132,12 +211,30 @@
     }
 
     function finish() {
+      // count last answer too
+      const inputs = questions[current].querySelectorAll('input[type=radio]');
+      inputs.forEach(input => {
+        if (input.checked) {
+          if (input.value === "high") score += 2;
+          if (input.value === "medium") score += 1;
+        }
+      });
+
       questions[current].classList.remove('active');
       document.getElementById('thanks').classList.add('active');
-      progress.style.width = "100%"; // complete bar
+      progress.style.width = "100%";
+
+      let message = "";
+      if (score >= 20) {
+        message = "🌟 Excellent! You’re taking really good care of yourself. Keep it up!";
+      } else if (score >= 14) {
+        message = "👍 You’re doing well, but there are a few areas where you could improve.";
+      } else {
+        message = "💡 You might need to give more attention to your self-care. Pick one small step to start today.";
+      }
+      document.getElementById('resultMessage').innerText = message;
     }
 
-    // Start progress at first question
     updateProgress();
   </script>
 </body>
