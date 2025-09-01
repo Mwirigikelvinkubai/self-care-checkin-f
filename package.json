@@ -1,0 +1,14 @@
+{
+  "name": "semax-security-website",
+  "version": "1.0.0",
+  "description": "Official website for Semax Security Services Limited",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Static HTML site - no build needed'",
+    "start": "echo 'Static site ready'",
+    "dev": "python -m http.server 8000 || python3 -m http.server 8000"
+  },
+  "keywords": ["security", "services", "kenya", "website", "static"],
+  "author": "Semax Security Services Limited",
+  "license": "UNLICENSED"
+}

@@ -2,156 +2,143 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Personal Self-Care Check-In</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; background: #f9f9f9; }
-    h2 { color: #2c3e50; }
-    .question { margin-bottom: 20px; padding: 15px; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    button { padding: 12px 24px; border: none; border-radius: 8px; background: #4CAF50; color: white; font-size: 16px; cursor: pointer; }
-    button:hover { background: #45a049; }
-    .result { margin-top: 30px; padding: 20px; border-radius: 8px; background: #ecf0f1; font-weight: bold; font-size: 1.2em; }
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    h2 {
+      color: #2c3e50;
+    }
+    .question {
+      display: none;
+    }
+    .question.active {
+      display: block;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 15px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Progress bar styles */
+    .progress-container {
+      width: 100%;
+      background: #ddd;
+      border-radius: 20px;
+      height: 12px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 12px;
+      width: 0;
+      background: #4CAF50;
+      transition: width 0.3s ease;
+    }
   </style>
 </head>
 <body>
-  <h2>🌿 Personal Self-Care Check-In</h2>
+  <h2>🌱 Personal Self-Care Check-In</h2>
   <p>Answer honestly — your results are private and only shown to you.</p>
 
-  <form id="selfCareForm">
-    <!-- Question 1 -->
-    <div class="question">
-      <label>1. How many hours of sleep do you usually get?</label><br>
-      <input type="radio" name="sleep" value="1"> Less than 5<br>
-      <input type="radio" name="sleep" value="2"> 5–6<br>
-      <input type="radio" name="sleep" value="3"> 7–8<br>
-      <input type="radio" name="sleep" value="2"> 9+<br>
-    </div>
+  <!-- Progress Bar -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progress"></div>
+  </div>
 
-    <!-- Question 2 -->
-    <div class="question">
-      <label>2. How often do you exercise?</label><br>
-      <input type="radio" name="exercise" value="3"> Daily<br>
-      <input type="radio" name="exercise" value="2"> Few times a week<br>
-      <input type="radio" name="exercise" value="1"> Rarely<br>
-      <input type="radio" name="exercise" value="0"> Never<br>
-    </div>
+  <!-- Questions -->
+  <div class="question active">
+    <p>1. How many hours of sleep do you usually get?</p>
+    <label><input type="radio" name="sleep"> Less than 5</label><br>
+    <label><input type="radio" name="sleep"> 5–6</label><br>
+    <label><input type="radio" name="sleep"> 7–8</label><br>
+    <label><input type="radio" name="sleep"> 9+</label><br>
+    <button onclick="nextQuestion()">Next</button>
+  </div>
 
-    <!-- Question 3 -->
-    <div class="question">
-      <label>3. Do you take breaks during your workday?</label><br>
-      <input type="radio" name="breaks" value="3"> Regularly<br>
-      <input type="radio" name="breaks" value="2"> Occasionally<br>
-      <input type="radio" name="breaks" value="1"> Rarely<br>
-      <input type="radio" name="breaks" value="0"> Never<br>
-    </div>
+  <div class="question">
+    <p>2. How often do you exercise?</p>
+    <label><input type="radio" name="exercise"> Daily</label><br>
+    <label><input type="radio" name="exercise"> Few times a week</label><br>
+    <label><input type="radio" name="exercise"> Rarely</label><br>
+    <label><input type="radio" name="exercise"> Never</label><br>
+    <button onclick="nextQuestion()">Next</button>
+  </div>
 
-    <!-- Question 4 -->
-    <div class="question">
-      <label>4. How is your nutrition?</label><br>
-      <input type="radio" name="nutrition" value="3"> Balanced and healthy<br>
-      <input type="radio" name="nutrition" value="2"> Somewhat balanced<br>
-      <input type="radio" name="nutrition" value="1"> Often unhealthy<br>
-      <input type="radio" name="nutrition" value="0"> Very poor<br>
-    </div>
+  <div class="question">
+    <p>3. Do you take breaks during your workday?</p>
+    <label><input type="radio" name="breaks"> Regularly</label><br>
+    <label><input type="radio" name="breaks"> Occasionally</label><br>
+    <label><input type="radio" name="breaks"> Rarely</label><br>
+    <label><input type="radio" name="breaks"> Never</label><br>
+    <button onclick="nextQuestion()">Next</button>
+  </div>
 
-    <!-- Question 5 -->
-    <div class="question">
-      <label>5. Do you spend time outdoors or in nature?</label><br>
-      <input type="radio" name="nature" value="3"> Almost every day<br>
-      <input type="radio" name="nature" value="2"> Weekly<br>
-      <input type="radio" name="nature" value="1"> Rarely<br>
-      <input type="radio" name="nature" value="0"> Never<br>
-    </div>
+  <div class="question">
+    <p>4. How is your nutrition?</p>
+    <label><input type="radio" name="nutrition"> Balanced and healthy</label><br>
+    <label><input type="radio" name="nutrition"> Somewhat balanced</label><br>
+    <label><input type="radio" name="nutrition"> Often unhealthy</label><br>
+    <label><input type="radio" name="nutrition"> Very poor</label><br>
+    <button onclick="finish()">Finish</button>
+  </div>
 
-    <!-- Question 6 -->
-    <div class="question">
-      <label>6. How connected do you feel to friends or family?</label><br>
-      <input type="radio" name="connections" value="3"> Very connected<br>
-      <input type="radio" name="connections" value="2"> Somewhat connected<br>
-      <input type="radio" name="connections" value="1"> Rarely connected<br>
-      <input type="radio" name="connections" value="0"> Not connected at all<br>
-    </div>
-
-    <!-- Question 7 -->
-    <div class="question">
-      <label>7. How do you manage stress?</label><br>
-      <input type="radio" name="stress" value="3"> Very well<br>
-      <input type="radio" name="stress" value="2"> Fairly well<br>
-      <input type="radio" name="stress" value="1"> Poorly<br>
-      <input type="radio" name="stress" value="0"> Not at all<br>
-    </div>
-
-    <!-- Question 8 -->
-    <div class="question">
-      <label>8. Do you make time for hobbies or relaxation?</label><br>
-      <input type="radio" name="hobbies" value="3"> Regularly<br>
-      <input type="radio" name="hobbies" value="2"> Sometimes<br>
-      <input type="radio" name="hobbies" value="1"> Rarely<br>
-      <input type="radio" name="hobbies" value="0"> Never<br>
-    </div>
-
-    <!-- Question 9 -->
-    <div class="question">
-      <label>9. Do you set boundaries between work and personal time?</label><br>
-      <input type="radio" name="boundaries" value="3"> Always<br>
-      <input type="radio" name="boundaries" value="2"> Sometimes<br>
-      <input type="radio" name="boundaries" value="1"> Rarely<br>
-      <input type="radio" name="boundaries" value="0"> Never<br>
-    </div>
-
-    <!-- Question 10 -->
-    <div class="question">
-      <label>10. Do you practice gratitude or reflection?</label><br>
-      <input type="radio" name="gratitude" value="3"> Daily<br>
-      <input type="radio" name="gratitude" value="2"> Weekly<br>
-      <input type="radio" name="gratitude" value="1"> Rarely<br>
-      <input type="radio" name="gratitude" value="0"> Never<br>
-    </div>
-
-    <!-- Question 11 -->
-    <div class="question">
-      <label>11. Do you go for regular health check-ups?</label><br>
-      <input type="radio" name="checkups" value="3"> Yes, regularly<br>
-      <input type="radio" name="checkups" value="2"> Sometimes<br>
-      <input type="radio" name="checkups" value="1"> Rarely<br>
-      <input type="radio" name="checkups" value="0"> Never<br>
-    </div>
-
-    <!-- Question 12 -->
-    <div class="question">
-      <label>12. Do you feel rested and energized most days?</label><br>
-      <input type="radio" name="energy" value="3"> Yes, most days<br>
-      <input type="radio" name="energy" value="2"> Sometimes<br>
-      <input type="radio" name="energy" value="1"> Rarely<br>
-      <input type="radio" name="energy" value="0"> Never<br>
-    </div>
-
-    <button type="button" onclick="calculateResult()">Finish</button>
-  </form>
-
-  <div id="result" class="result"></div>
+  <div class="question" id="thanks">
+    <h3>✅ Thank you for completing the Self-Care Check-In!</h3>
+    <p>Take a moment to reflect on your answers and choose one small action you can take today to care for yourself. 🌸</p>
+  </div>
 
   <script>
-    function calculateResult() {
-      let form = document.getElementById("selfCareForm");
-      let data = new FormData(form);
-      let score = 0;
+    let current = 0;
+    const questions = document.querySelectorAll('.question');
+    const progress = document.getElementById('progress');
+    const totalQuestions = questions.length - 1; // exclude thank-you
 
-      for (let value of data.values()) {
-        score += parseInt(value);
-      }
-
-      let resultText = "";
-      if (score <= 20) {
-        resultText = "🌱 Time to Refuel: You're running low on self-care. Start small—drink water, rest, or take a short walk.";
-      } else if (score <= 35) {
-        resultText = "⚖️ Building Balance: You're doing okay, but there are areas to strengthen. Choose one habit this week.";
-      } else {
-        resultText = "🌟 Keep Thriving: You're taking great care of yourself! Keep maintaining those habits and encourage others too.";
-      }
-
-      document.getElementById("result").innerText = resultText;
+    function updateProgress() {
+      let percent = (current / totalQuestions) * 100;
+      progress.style.width = percent + "%";
     }
+
+    function nextQuestion() {
+      questions[current].classList.remove('active');
+      current++;
+      if (current < totalQuestions) {
+        questions[current].classList.add('active');
+      } else {
+        finish();
+        return;
+      }
+      updateProgress();
+    }
+
+    function finish() {
+      questions[current].classList.remove('active');
+      document.getElementById('thanks').classList.add('active');
+      progress.style.width = "100%"; // complete bar
+    }
+
+    // Start progress at first question
+    updateProgress();
   </script>
 </body>
 </html>
