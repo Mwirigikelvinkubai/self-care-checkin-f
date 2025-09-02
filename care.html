@@ -226,11 +226,11 @@
 
       let message = "";
       if (score >= 20) {
-        message = "🌟 Excellent! You’re taking really good care of yourself. Keep it up!";
+        message = "🌟 your score is >20, Excellent! You’re taking really good care of yourself. Keep it up!";
       } else if (score >= 14) {
-        message = "👍 You’re doing well, but there are a few areas where you could improve.";
+        message = "👍 Your score range is 14 - 20 you’re doing well, but there are a few areas where you could improve.";
       } else {
-        message = "💡 You might need to give more attention to your self-care. Pick one small step to start today.";
+        message = "💡 Your score is <14, you might need to give more attention to your self-care. Pick one small step to start today.";
       }
       document.getElementById('resultMessage').innerText = message;
     }
